@@ -1,0 +1,21 @@
+name: Xcode - Build and Analyze
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  create_release:
+    name: Create Release
+    runs-on: macos-latest
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Create XCFramework
+        uses: unsignedapps/swift-create-xcframework@v2
+
+      # Create a release
+      # Upload those artifacts to the release
